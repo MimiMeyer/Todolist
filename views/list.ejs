@@ -1,0 +1,50 @@
+<%- include("header") -%>
+
+
+
+<div class="box" id="heading">
+  <h1> <%= listTitle %> </h1>
+</div>
+
+
+<div class="box">
+  <% newListItems.forEach(function(item){  %>
+  <form action="/delete/list" method="post">
+    <div class="item">
+      <input type="checkbox" name="checkbox" value="<%= item._id%>" onchange="this.form.submit()">
+      <p><%= item.name  %></p>
+    </div>
+    <input type="hidden" name="listName" value="<%= listTitle%>">
+  </form>
+  <% }); %>
+
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New <%= type%>" autocomplete="off">
+    <button class="add" type="submit" name="list" value="<%= listTitle%>">+</button>
+  </form>
+
+</div>
+
+<div class="allign-center">
+
+  <div class="btn-group ">
+    <form  action="/update/lists" method="post">
+      <button class="btn btn-danger" type="submit" >Add and Delete Lists</button>
+    </form>
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split " data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <% dropDownList.forEach(function(list){ %>
+      <li><a class="dropdown-item" href="/<%=list.name%>"><%=list.name%> </a></li>
+      <% }); %>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="/"> Default</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<%- include("footer") -%>
