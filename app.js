@@ -15,7 +15,7 @@ app.use(express.static(__dirname + "/public"));
 const day = date.getDate();
 
 //atlas info
-mongoose.connect("mongodb+srv://<name>:<password>@cluster0.2k5bjsm.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://<name>:<password>@cluster/todolistDB");
 
 
 
